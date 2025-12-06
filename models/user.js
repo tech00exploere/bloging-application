@@ -17,12 +17,12 @@ const userSchema = new Schema(
     },
     salt: {
       type: String,
-      select: false,     // don't include salt in queries by default
+      select: false,  
     },
     password: {
       type: String,
       required: true,
-      select: false,     // prevents password from leaking
+      select: false,  
     },
     profileImageURL: {
       type: String,
