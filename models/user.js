@@ -60,7 +60,6 @@ userSchema.statics.matchPassword = async function (email, password) {
   return null;
 };
 
-// Login compare function
 userSchema.statics.matchPassword = async function (email, password) {
   const user = await this.findOne({ email });
   if (!user) return null;
@@ -73,8 +72,6 @@ userSchema.statics.matchPassword = async function (email, password) {
   return null;
 };
 
-
-// Custom static login helper
 userSchema.statics.login = async function (email, password) {
   const user = await this.findOne({ email }).select("+password +salt");
 
@@ -90,8 +87,6 @@ userSchema.statics.login = async function (email, password) {
   user.salt = undefined;
   return user;
 };
-
-// Ensure password never appears when converting to JSON
 userSchema.methods.toJSON = function () {
   const obj = this.toObject();
   delete obj.password;
