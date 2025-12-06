@@ -1,0 +1,28 @@
+{
+  "name": "blogging-application",
+  "version": "1.0.0",
+  "description": "It's a blogging application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "bootstrap": "^5.3.8",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.8.7",
+    "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "author": "priyanshu",
+  "license": "ISC"
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('./partials/head') %>
+  <title>New Blog Post</title>
+  <style>
+    .post-container {
+      max-width: 700px;
+      margin: 60px auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 200px;
+    }
+
+    .form-label {
+      font-weight: 600;
+    }
+
+    .btn-primary {
+      background: #007bff;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: #0056b3;
+    }
+
+    .alert {
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <%- include('./partials/nav') %>
+
+  <div class="post-container">
+    <% if (!user) { %>
+      <div class="alert alert-warning text-center">
+        Please <a href="/user/signin">login</a> to create a post.
+      </div>
+    <% } else { %>
+
+      <h2 class="text-center mb-4">✍️ Create a New Blog Post</h2>
+
+      <% if (typeof error !== "undefined") { %>
+        <div class="alert alert-danger text-center"><%= error %></div>
+      <% } %>
+
+      <% if (typeof success !== "undefined") { %>
+        <div class="alert alert-success text-center"><%= success %></div>
+      <% } %>
+
+      <form action="/blog/add" method="POST" enctype="multipart/form-data">
+
+        <!-- Blog Title -->
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            placeholder="Enter your blog title"
+            required
+          >
+        </div>
+
+        <!-- Blog Content -->
+        <div class="mb-3">
+          <label for="content" class="form-label">Content</label>
+          <textarea
+            class="form-control"
+            id="content"
+            name="content"
+            placeholder="Write your thoughts..."
+            required
+          ></textarea>
+        </div>
+
+        <!-- Optional Image Upload -->
+        <div class="mb-3">
+          <label for="image" class="form-label">Upload Image (optional)</label>
+          <input
+            type="file"
+            class="form-control"
+            id="image"
+            name="image"
+            accept="image/*"
+          >
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-3">Publish Post</button>
+      </form>
+
+    <% } %>
+  </div>
+
+</body>
+</html>

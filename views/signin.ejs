@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>signin</title>
+</head>
+<body>
+<%- include('./partials/nav') %>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4 text-black">Login to Your Account</h2>
+
+    <% if (typeof error !== "undefined") { %>
+      <div class="alert alert-danger text-center"><%= error %></div>
+    <% } %>
+
+    <form action="/user/signin" method="POST" class="p-4 border rounded bg-light shadow-sm" style="max-width: 450px; margin: auto;">
+        
+        <!-- Email -->
+        <div class="mb-3">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" name="email" placeholder="Enter Email" required>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+
+        <!-- Signup Link -->
+        <p class="text-center mt-3">
+            Don't have an account?
+            <a href="/user/signup">Create one</a>
+        </p>
+
+    </form>
+</div>
+
+</body>
+</html>
