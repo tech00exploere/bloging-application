@@ -48,7 +48,6 @@ userSchema.pre("save", function (next) {
   next();
 });
 
-// Login compare function
 userSchema.statics.matchPassword = async function (email, password) {
   const user = await this.findOne({ email });
   if (!user) return null;
