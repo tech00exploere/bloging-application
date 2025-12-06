@@ -12,7 +12,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Email is required"],
       unique: true,
-      lowercase: true,   // normalize case
+      lowercase: true, 
       trim: true,
     },
     salt: {
@@ -87,7 +87,6 @@ userSchema.statics.login = async function (email, password) {
 
   if (hashed !== user.password) throw new Error("Invalid password");
 
-  // remove sensitive fields before returning
   user.password = undefined;
   user.salt = undefined;
   return user;
