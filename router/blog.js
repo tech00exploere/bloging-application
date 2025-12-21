@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router();
 const Blog = require("../models/blog");
 
-// Show create blog page
 router.get("/add-new", (req, res) => {
   if (!req.user) return res.redirect("/user/signin"); // protected route
   res.render("addblog", { user: req.user });
 });
 
-// Create new blog (POST)
+//(POST)
 router.post("/add-new", async (req, res) => {
   try {
     if (!req.user) return res.redirect("/user/signin");
