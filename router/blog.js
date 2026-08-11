@@ -3,7 +3,7 @@ const router = express.Router();
 const Blog = require("../models/blog");
 
 router.get("/add-new", (req, res) => {
-  if (!req.user) return res.redirect("/user/signin"); // protected route
+  if (!req.user) return res.redirect("/user/signin");
   res.render("addblog", { user: req.user });
 });
 
